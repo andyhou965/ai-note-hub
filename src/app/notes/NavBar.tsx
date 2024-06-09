@@ -7,10 +7,10 @@ import logo from "@/assets/logo.png";
 import { UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import AddNoteDialog from "@/components/AddNoteDialog";
+import AddEditNoteDialog from "@/components/AddEditNoteDialog";
 
 const NavBar = () => {
-  const [showAddNoteDialog, setShowAddNoteDialog] = useState(false);
+  const [showAddEditNoteDialog, setShowAddEditNoteDialog] = useState(false);
 
   return (
     <>
@@ -27,17 +27,17 @@ const NavBar = () => {
                 elements: { avatarBox: { width: "2.5rem", height: "2.5rem" } },
               }}
             />
-            <Button onClick={() => setShowAddNoteDialog(true)}>
+            <Button onClick={() => setShowAddEditNoteDialog(true)}>
               <Plus size={20} className="mr-2" />
               Add Note
             </Button>
           </div>
         </div>
       </div>
-      {showAddNoteDialog && (
-        <AddNoteDialog
-          open={showAddNoteDialog}
-          setOpen={setShowAddNoteDialog}
+      {showAddEditNoteDialog && (
+        <AddEditNoteDialog
+          open={showAddEditNoteDialog}
+          setOpen={setShowAddEditNoteDialog}
         />
       )}
     </>
