@@ -21,6 +21,13 @@ const Note = ({ note }: NoteProps) => {
   const createdUpdatedAtTimestamp = (
     wasUpdated ? note.updatedAt : note.createdAt
   ).toDateString();
+
+  const content = note.content || "";
+  const truncatedContent =
+    content.length > 200
+      ? content.substring(0, content.lastIndexOf(" ", 200)) + "..."
+      : content;
+
   return (
     <>
       <Card
@@ -35,7 +42,7 @@ const Note = ({ note }: NoteProps) => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="whitespace-pre-line">{note.content}</p>
+          <p className="whitespace-pre-line">{truncatedContent}</p>
         </CardContent>
       </Card>
       <AddEditNoteDialog
