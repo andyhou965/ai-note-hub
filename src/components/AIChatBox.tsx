@@ -9,6 +9,7 @@ import { Button } from "./ui/button";
 import { Message } from "ai";
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
+import ReactMarkdown from "react-markdown";
 
 interface AIChatBoxProps {
   open: boolean;
@@ -126,7 +127,16 @@ function ChatMessage({
           isAiMessage ? "bg-background" : "bg-primary text-primary-foreground",
         )}
       >
-        {content}
+        <ReactMarkdown
+          components={{
+            ul: ({ node, ...props }) => (
+              <ul {...props} className="my-0 list-inside list-disc" />
+            ),
+            li: ({ node, ...props }) => <li {...props} className="my-0" />,
+          }}
+        >
+          {content}
+        </ReactMarkdown>
       </p>
       {!isAiMessage && user?.imageUrl && (
         <Image
