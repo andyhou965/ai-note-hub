@@ -20,7 +20,7 @@ export async function POST(req: Request) {
 
     const vectorQueryResponse = await notesIndex.query({
       vector: embedding,
-      topK: 4,
+      topK: 10,
       filter: { userId },
     });
 
